@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Skrzynia_biegów_V2
 {
     public partial class Form1 : Form
     {
+        double[] xchart = new double[2];
+        double[] ychart = new double[2];
         private int _ticks;
         private int _time;
         private int _sec=0;
@@ -26,12 +29,21 @@ namespace Skrzynia_biegów_V2
         {
             
         }
-        public void Start()
+        public void Start()//element wykonywany raz na starcie programu
         {
             BoxDownObc.Text = BarObc.Value.ToString() + "%";
             BoxDownUchyl.Text = BarUchyl.Value.ToString() + "°";
             ControlGear();
             ControlChart();
+            chart1.ChartAreas[0].AxisX.Maximum = 11;
+            chart1.ChartAreas[0].AxisX.Minimum = -1;
+            chart1.ChartAreas[0].AxisY.Maximum = 21;
+            chart1.ChartAreas[0].AxisY.Minimum = -1;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
+            chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
+
         }
         public void loop()
         {
@@ -40,7 +52,15 @@ namespace Skrzynia_biegów_V2
         }
         public void ControlChart()
         {
-
+            double x1 = 0;
+            double x2 = 10;
+            double x22 =10;//parametr dodatowy
+            double y2 = (x2+x22)* BarObc.Value/100;
+            xchart[0] = x1;//stale parametry x
+            xchart[1] = x2;
+            ychart[0] = x1;
+            ychart[1] = y2;
+            chart1.Series["Series1"].Points.DataBindXY(xchart, ychart);
         }
         public void ControlGear()
         {
