@@ -93,7 +93,8 @@
             // BarObc
             // 
             this.BarObc.Location = new System.Drawing.Point(665, 152);
-            this.BarObc.Maximum = 100;
+            this.BarObc.Maximum = 30;
+            this.BarObc.Minimum = -30;
             this.BarObc.Name = "BarObc";
             this.BarObc.Size = new System.Drawing.Size(104, 45);
             this.BarObc.TabIndex = 2;

@@ -18,7 +18,7 @@ namespace Skrzynia_biegów_V2
         private int _ticks;
         private int _time;
         private int _sec=0;
-        private int _min=0;
+        private int _min = 0;
         public Form1()
         {
             InitializeComponent();
@@ -31,14 +31,15 @@ namespace Skrzynia_biegów_V2
         }
         public void Start()//element wykonywany raz na starcie programu
         {
-            BoxDownObc.Text = BarObc.Value.ToString() + "%";
+            if (BarObc.Value == 50) { BoxDownObc.Text = "0" + "°"; }
+            else if (BarObc.Value != 50) { BoxDownObc.Text = (BarObc.Value).ToString() + "°"; }
             BoxDownUchyl.Text = BarUchyl.Value.ToString() + "°";
             ControlGear();
             ControlChart();
             chart1.ChartAreas[0].AxisX.Maximum = 11;
             chart1.ChartAreas[0].AxisX.Minimum = -1;
-            chart1.ChartAreas[0].AxisY.Maximum = 21;
-            chart1.ChartAreas[0].AxisY.Minimum = -1;
+            chart1.ChartAreas[0].AxisY.Maximum = 31;
+            chart1.ChartAreas[0].AxisY.Minimum = -31;
             chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
             chart1.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
@@ -54,8 +55,8 @@ namespace Skrzynia_biegów_V2
         {
             double x1 = 0;
             double x2 = 10;
-            double x22 =10;//parametr dodatowy
-            double y2 = (x2+x22)* BarObc.Value/100;
+            double y2 = 0;
+            if(BarObc.Value != 50) { y2 = (x2 * (BarObc.Value))/10; }
             xchart[0] = x1;//stale parametry x
             xchart[1] = x2;
             ychart[0] = x1;
@@ -100,7 +101,9 @@ namespace Skrzynia_biegów_V2
 
         private void BarObc_Scroll(object sender, EventArgs e)
         {
-            BoxDownObc.Text = BarObc.Value.ToString()+"%";
+            if (BarObc.Value == 50) { BoxDownObc.Text = "0" + "°"; }
+            else if (BarObc.Value != 50) { BoxDownObc.Text = (BarObc.Value).ToString() + "°"; }
+            //else if (BarObc.Value < 50) { BoxDownObc.Text = (BarObc.Value-50).ToString() + "°"; }
         }
 
         private void BarUchyl_Scroll(object sender, EventArgs e)
