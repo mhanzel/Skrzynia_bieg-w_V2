@@ -46,7 +46,6 @@ namespace Skrzynia_biegów_V2
         {
             ControlChart();
             ControlGear();
-            f2.Update();
         }
         public void ControlChart()
         {
