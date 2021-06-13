@@ -49,13 +49,12 @@ namespace Skrzynia_biegów_V2
             BoxMin.Text = _min.ToString();
             Praca = false;
             BoxRPM.Text = "0";
-
         }
 
         private void TimerCzas_Tick_1(object sender, EventArgs e)
         {
             _time++;
-            if (_time == 10)
+            if (_time == 10)//zegar
             {
                 ++_sec;
                 BoxSec.Text = _sec.ToString();
@@ -68,17 +67,14 @@ namespace Skrzynia_biegów_V2
                 }
                 _time = 0;
             }
-            if (_time > 2)
+            if (_time > 1)//loopa do wstawiania zmiennych
             {
                 chart1.Series["Series1"].Points.DataBindXY(Form1.xchart, Form1.ychart);
                 BoxRPM.Text = Form1.RPM.ToString();
             }
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            
-        }
+     
         
     }
 }

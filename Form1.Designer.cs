@@ -43,9 +43,13 @@
             this.BoxDownUchyl = new System.Windows.Forms.Label();
             this.BoxDownObc = new System.Windows.Forms.Label();
             this.BoxDownPraca = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RadioButtonOn = new System.Windows.Forms.RadioButton();
+            this.RadioButtonOFF = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.BarUchyl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarObc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BarUchyl
@@ -196,11 +200,45 @@
             this.BoxDownPraca.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BoxDownPraca.UseMnemonic = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.RadioButtonOFF);
+            this.groupBox1.Controls.Add(this.RadioButtonOn);
+            this.groupBox1.Location = new System.Drawing.Point(668, 341);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(101, 77);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Praca skrzyni";
+            // 
+            // RadioButtonOn
+            // 
+            this.RadioButtonOn.AutoSize = true;
+            this.RadioButtonOn.Checked = true;
+            this.RadioButtonOn.Location = new System.Drawing.Point(7, 18);
+            this.RadioButtonOn.Name = "RadioButtonOn";
+            this.RadioButtonOn.Size = new System.Drawing.Size(57, 17);
+            this.RadioButtonOn.TabIndex = 0;
+            this.RadioButtonOn.TabStop = true;
+            this.RadioButtonOn.Text = "Włącz";
+            this.RadioButtonOn.UseVisualStyleBackColor = true;
+            // 
+            // RadioButtonOFF
+            // 
+            this.RadioButtonOFF.AutoSize = true;
+            this.RadioButtonOFF.Location = new System.Drawing.Point(7, 44);
+            this.RadioButtonOFF.Name = "RadioButtonOFF";
+            this.RadioButtonOFF.Size = new System.Drawing.Size(62, 17);
+            this.RadioButtonOFF.TabIndex = 1;
+            this.RadioButtonOFF.Text = "Wyłącz";
+            this.RadioButtonOFF.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BoxDownPraca);
             this.Controls.Add(this.BoxDownObc);
             this.Controls.Add(this.BoxDownUchyl);
@@ -220,6 +258,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarUchyl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarObc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,6 +281,9 @@
         private System.Windows.Forms.Label BoxDownUchyl;
         private System.Windows.Forms.Label BoxDownObc;
         private System.Windows.Forms.Label BoxDownPraca;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton RadioButtonOFF;
+        private System.Windows.Forms.RadioButton RadioButtonOn;
     }
 }
 

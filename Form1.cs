@@ -16,10 +16,12 @@ namespace Skrzynia_biegów_V2
         public static double[] xchart = new double[2];
         public static double[] ychart = new double[2];
         public int _ticks;
-        public static int RPM = 0; // revolutions per minute
+        public static int RPM = 1000; // revolutions per minute
         public static int Gear = 0;
         public static int KPH = 0;// kilometers per hour
         public static int GR = 2; // Gear ratio
+        public static int MinRPM = 1000;
+        public static double _change = 0;
         public Form f2;
         public Form1()
         {
@@ -60,86 +62,94 @@ namespace Skrzynia_biegów_V2
         }
         public void ControlGear()
         {
-            if (Form2.Praca == true)
+            if (Form2.Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji
             {
-                if (BoxGear.Text == "N"){Gear = 1; RPM = 2100;}
+                if (BoxGear.Text == "N"){Gear = 1; RPM = 1000;}
                 BoxGear.Text = Gear.ToString();
             }
             else
             {
-                BoxGear.Text = "N"; RPM = 0;
+                BoxGear.Text = "N";RPM = 1000;
             }
-                switch (BarPraca.Value)
+            Engine();
+            if (RadioButtonOn.Checked == true)//Jeżeli skyrznia biegów jest wykorzystywana 
             {
-                
-                case 1:
-                    Console.WriteLine("Praca w trybie ekonomicznym");
-                    BoxDownPraca.Text = "Eko";
-                    if (Form2.Praca == true)
-                    {
-                        
-                        if (CheckEko() == 1)
+                switch (BarPraca.Value)
+                {
+
+                    case 1:
+                        Console.WriteLine("Praca w trybie ekonomicznym");
+                        BoxDownPraca.Text = "Eko";
+                        if (Form2.Praca == true)
                         {
-                            ++Gear;
-                            RPM = RPM / GR;
+
+                            if (CheckEko() == 1)
+                            {
+                                ++Gear;
+                                RPM = RPM / GR;
+                            }
+                            else if (CheckEko() == -1)
+                            {
+                                --Gear;
+                                RPM = RPM * GR;
+                            }
                         }
-                        else if (CheckEko() == -1)
+                        break;
+                    case 2:
+                        Console.WriteLine("Praca w trybie normalnym");
+                        BoxDownPraca.Text = "Normal";
+                        if (Form2.Praca == true)
                         {
-                            --Gear;
-                            RPM = RPM * GR;
+                            if (CheckNormal() == 1)
+                            {
+                                ++Gear;
+                                RPM = RPM / GR;
+                            }
+                            else if (CheckNormal() == -1)
+                            {
+                                --Gear;
+                                RPM = RPM * GR;
+                            }
                         }
-                        Engine();
-                    }
-                    break;
-                case 2:
-                    Console.WriteLine("Praca w trybie normalnym");
-                    BoxDownPraca.Text ="Normal";
-                    if (Form2.Praca == true)
-                    {
-                        if (CheckNormal() == 1)
+                        break;
+                    case 3:
+                        Console.WriteLine("Praca w trybie sport");
+                        BoxDownPraca.Text = "Sport";
+                        if (Form2.Praca == true)
                         {
-                            ++Gear;
-                            RPM = RPM / GR;
+                            if (CheckSport() == 1)
+                            {
+                                ++Gear;
+                                RPM = RPM / GR;
+                            }
+                            else if (CheckSport() == -1)
+                            {
+                                --Gear;
+                                RPM = RPM * GR;
+                            }
                         }
-                        else if (CheckNormal() == -1)
-                        {
-                            --Gear;
-                            RPM = RPM * GR;
-                        }
-                        Engine();
-                    }
-                    break;
-                case 3:
-                    Console.WriteLine("Praca w trybie sport");
-                    BoxDownPraca.Text ="Sport";
-                    if (Form2.Praca == true)
-                    {
-                        if (CheckSport() == 1)
-                        {
-                            ++Gear;
-                            RPM = RPM / GR;
-                        }
-                        else if (CheckSport() == -1)
-                        {
-                            --Gear;
-                            RPM = RPM * GR;
-                        }
-                        Engine();
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Błąd pracy silnika");
-                    break;
+                        break;
+                    default:
+                        Console.WriteLine("Błąd pracy silnika");
+                        break;
+                }
             }
         }
         public void Engine()
         {
-            if (BarUchyl.Value > 20 && BarUchyl.Value < 45) RPM+= 100;
-            else if(BarUchyl.Value < 20 && BarUchyl.Value > 0) { RPM-= 100; }
-            else if (BarUchyl.Value == 45) { RPM += 500; }
-            else if (BarUchyl.Value == 0) { RPM -= 500; }
-            if (RPM < 1500) RPM = 1500;
-            if (RPM > 8000) RPM = 8000;
+            //funkcja silnika
+            _change= 1500 * (1 + (0.05 * BarUchyl.Value)) - 1650 -(RPM*RPM*0.505/10000) - (BarObc.Value*10);
+            if (_change < 0)//zaimplementowanie momentu bezwładmości
+            {
+                _change = _change * (Convert.ToDouble(MinRPM) / Convert.ToDouble(RPM)) * 1.5;
+            }
+            else
+            {
+                _change = _change * (Convert.ToDouble(RPM) / Convert.ToDouble(MinRPM)) / 10;
+            }
+            RPM = RPM + Convert.ToInt32(_change);//zmiana obrotów
+            if (RPM < MinRPM) RPM = MinRPM;//aby silnik nie malał do 0 stałe trzymanie 1000 RPM
+            
         }
         public int CheckEko()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
