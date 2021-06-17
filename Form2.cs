@@ -49,6 +49,8 @@ namespace Skrzynia_biegów_V2
             BoxMin.Text = _min.ToString();
             Praca = false;
             BoxRPM.Text = "0";
+            aGauge1.Value = 0;
+            aGauge2.Value = 0;
         }
 
         private void TimerCzas_Tick_1(object sender, EventArgs e)
@@ -71,10 +73,15 @@ namespace Skrzynia_biegów_V2
             {
                 chart1.Series["Series1"].Points.DataBindXY(Form1.xchart, Form1.ychart);
                 BoxRPM.Text = Form1.RPM.ToString();
+                aGauge1.Value = Form1.RPM;
             }
         }
+        private void aGauge1_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
+        {
 
-     
-        
+        }
+
+
+
     }
 }

@@ -149,7 +149,6 @@ namespace Skrzynia_biegów_V2
             }
             RPM = RPM + Convert.ToInt32(_change);//zmiana obrotów
             if (RPM < MinRPM) RPM = MinRPM;//aby silnik nie malał do 0 stałe trzymanie 1000 RPM
-            
         }
         public int CheckEko()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
@@ -190,6 +189,8 @@ namespace Skrzynia_biegów_V2
         {
             BoxDownUchyl.Text = BarUchyl.Value.ToString()+ "°";
         }
+
+
     }
     
 }

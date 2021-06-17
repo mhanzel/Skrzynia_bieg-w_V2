@@ -27,7 +27,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
+        {           
             this.components = new System.ComponentModel.Container();
             this.BarUchyl = new System.Windows.Forms.TrackBar();
             this.BoxUpUchyl = new System.Windows.Forms.TextBox();
@@ -44,13 +44,14 @@
             this.BoxDownObc = new System.Windows.Forms.Label();
             this.BoxDownPraca = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RadioButtonOn = new System.Windows.Forms.RadioButton();
             this.RadioButtonOFF = new System.Windows.Forms.RadioButton();
+            this.RadioButtonOn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.BarUchyl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarObc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+
             // 
             // BarUchyl
             // 
@@ -211,6 +212,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Praca skrzyni";
             // 
+            // RadioButtonOFF
+            // 
+            this.RadioButtonOFF.AutoSize = true;
+            this.RadioButtonOFF.Location = new System.Drawing.Point(7, 44);
+            this.RadioButtonOFF.Name = "RadioButtonOFF";
+            this.RadioButtonOFF.Size = new System.Drawing.Size(62, 17);
+            this.RadioButtonOFF.TabIndex = 1;
+            this.RadioButtonOFF.Text = "Wyłącz";
+            this.RadioButtonOFF.UseVisualStyleBackColor = true;
+            // 
             // RadioButtonOn
             // 
             this.RadioButtonOn.AutoSize = true;
@@ -222,16 +233,6 @@
             this.RadioButtonOn.TabStop = true;
             this.RadioButtonOn.Text = "Włącz";
             this.RadioButtonOn.UseVisualStyleBackColor = true;
-            // 
-            // RadioButtonOFF
-            // 
-            this.RadioButtonOFF.AutoSize = true;
-            this.RadioButtonOFF.Location = new System.Drawing.Point(7, 44);
-            this.RadioButtonOFF.Name = "RadioButtonOFF";
-            this.RadioButtonOFF.Size = new System.Drawing.Size(62, 17);
-            this.RadioButtonOFF.TabIndex = 1;
-            this.RadioButtonOFF.Text = "Wyłącz";
-            this.RadioButtonOFF.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -252,6 +253,7 @@
             this.Controls.Add(this.BarObc);
             this.Controls.Add(this.BoxUpUchyl);
             this.Controls.Add(this.BarUchyl);
+
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -284,6 +286,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton RadioButtonOFF;
         private System.Windows.Forms.RadioButton RadioButtonOn;
+
     }
 }
 
