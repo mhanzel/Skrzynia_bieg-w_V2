@@ -161,7 +161,7 @@ namespace Skrzynia_biegów_V2
             }
             else
             {
-                _change = _change * (Convert.ToDouble(RPM) / Convert.ToDouble(MinRPM)) / 10;
+                _change = _change / (Convert.ToDouble(MinRPM) / Convert.ToDouble(RPM)) / 15;
             }
             RPM = RPM + Convert.ToInt32(_change);//zmiana obrotów
             if (RPM < MinRPM) RPM = MinRPM;//aby silnik nie malał do 0 stałe trzymanie 1000 RPM
