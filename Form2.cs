@@ -81,7 +81,10 @@ namespace Skrzynia_biegów_V2
 
         }
 
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
     }
 }
