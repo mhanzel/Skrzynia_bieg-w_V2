@@ -20,11 +20,12 @@ namespace Skrzynia_biegów_V2
         public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
         public static int Gear = 0;
         public static int KPH = 0;// kilometers per hour
-        public static int GR = 2; // Gear ratio
+        public static double GR = 1.5; // Gear ratio
         public static int MinRPM = 1000;
         public static double Diameter = 40;// w cm
         public static double _change = 0;
-        public static int speed = 0;
+        public static int speed = 1;
+        public static int MaxSpeed = 260;
         public Form f2;
         public Form1()
         {
@@ -57,11 +58,10 @@ namespace Skrzynia_biegów_V2
         public void _CheckSpeed()//sprawdza prędkość
         {
             if (BoxDownGear.Text == "N") RPMV = 0;
-            else RPMV = Convert.ToDouble(RPM / (20 / Math.Pow(GR, Gear - 1)) / 60);//ilość obrotów na sekunde i w zależności od biegu
+            else RPMV = Convert.ToDouble(RPM / (20 / Math.Pow(GR, Gear - 1)) / 60 );//ilość obrotów na sekunde i w zależności od biegu
             double obwod = (2 * Math.PI* Diameter/2)/100;//obwód koła w metrach
             speed = Convert.ToInt32( RPMV*obwod*3.6);//prędkość policzona poprzez obrót koła i przeliczona na km/h
             BoxDownSpeed.Text = speed.ToString();
-            
 
         }
 
@@ -102,12 +102,12 @@ namespace Skrzynia_biegów_V2
                             if (CheckEko() == 1)
                             {
                                 ++Gear;
-                                RPM = RPM / GR;
+                                RPM = Convert.ToInt32(RPM / GR);
                             }
                             else if (CheckEko() == -1)
                             {
                                 --Gear;
-                                RPM = RPM * GR;
+                                RPM = Convert.ToInt32(RPM * GR);
                             }
                         }
                         break;
@@ -119,12 +119,12 @@ namespace Skrzynia_biegów_V2
                             if (CheckNormal() == 1)
                             {
                                 ++Gear;
-                                RPM = RPM / GR;
+                                RPM = Convert.ToInt32(RPM / GR);
                             }
                             else if (CheckNormal() == -1)
                             {
                                 --Gear;
-                                RPM = RPM * GR;
+                                RPM = Convert.ToInt32(RPM * GR);
                             }
                         }
                         break;
@@ -136,12 +136,12 @@ namespace Skrzynia_biegów_V2
                             if (CheckSport() == 1)
                             {
                                 ++Gear;
-                                RPM = RPM / GR;
+                                RPM = Convert.ToInt32(RPM / GR);
                             }
                             else if (CheckSport() == -1)
                             {
                                 --Gear;
-                                RPM = RPM * GR;
+                                RPM = Convert.ToInt32(RPM * GR);
                             }
                         }
                         break;
