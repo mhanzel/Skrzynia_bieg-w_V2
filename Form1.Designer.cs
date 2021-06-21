@@ -36,20 +36,24 @@
             this.BoxUpPraca = new System.Windows.Forms.TextBox();
             this.BarPraca = new System.Windows.Forms.TrackBar();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.BoxGear = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.BoxDownGear = new System.Windows.Forms.TextBox();
+            this.BoxDownSpeed = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.TimerTick = new System.Windows.Forms.Timer(this.components);
             this.BoxDownUchyl = new System.Windows.Forms.Label();
             this.BoxDownObc = new System.Windows.Forms.Label();
             this.BoxDownPraca = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RadioButtonOn = new System.Windows.Forms.RadioButton();
             this.RadioButtonOFF = new System.Windows.Forms.RadioButton();
+            this.RadioButtonOn = new System.Windows.Forms.RadioButton();
+            this.BoxDownSzybkosc = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BarSzybkosc = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.BarUchyl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarObc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarSzybkosc)).BeginInit();
             this.SuspendLayout();
             // 
             // BarUchyl
@@ -125,27 +129,27 @@
             this.textBox4.Text = "Bieg";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BoxGear
+            // BoxDownGear
             // 
-            this.BoxGear.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BoxGear.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BoxGear.Location = new System.Drawing.Point(565, 38);
-            this.BoxGear.Name = "BoxGear";
-            this.BoxGear.ReadOnly = true;
-            this.BoxGear.Size = new System.Drawing.Size(42, 62);
-            this.BoxGear.TabIndex = 7;
-            this.BoxGear.Text = "N";
+            this.BoxDownGear.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BoxDownGear.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BoxDownGear.Location = new System.Drawing.Point(565, 38);
+            this.BoxDownGear.Name = "BoxDownGear";
+            this.BoxDownGear.ReadOnly = true;
+            this.BoxDownGear.Size = new System.Drawing.Size(42, 62);
+            this.BoxDownGear.TabIndex = 7;
+            this.BoxDownGear.Text = "N";
             // 
-            // textBox6
+            // BoxDownSpeed
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox6.Location = new System.Drawing.Point(539, 152);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(92, 62);
-            this.textBox6.TabIndex = 9;
-            this.textBox6.Text = "000";
+            this.BoxDownSpeed.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BoxDownSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BoxDownSpeed.Location = new System.Drawing.Point(382, 152);
+            this.BoxDownSpeed.Name = "BoxDownSpeed";
+            this.BoxDownSpeed.ReadOnly = true;
+            this.BoxDownSpeed.Size = new System.Drawing.Size(249, 62);
+            this.BoxDownSpeed.TabIndex = 9;
+            this.BoxDownSpeed.Text = "000";
             // 
             // textBox7
             // 
@@ -211,6 +215,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Praca skrzyni";
             // 
+            // RadioButtonOFF
+            // 
+            this.RadioButtonOFF.AutoSize = true;
+            this.RadioButtonOFF.Location = new System.Drawing.Point(7, 44);
+            this.RadioButtonOFF.Name = "RadioButtonOFF";
+            this.RadioButtonOFF.Size = new System.Drawing.Size(62, 17);
+            this.RadioButtonOFF.TabIndex = 1;
+            this.RadioButtonOFF.Text = "Wyłącz";
+            this.RadioButtonOFF.UseVisualStyleBackColor = true;
+            // 
             // RadioButtonOn
             // 
             this.RadioButtonOn.AutoSize = true;
@@ -223,28 +237,54 @@
             this.RadioButtonOn.Text = "Włącz";
             this.RadioButtonOn.UseVisualStyleBackColor = true;
             // 
-            // RadioButtonOFF
+            // BoxDownSzybkosc
             // 
-            this.RadioButtonOFF.AutoSize = true;
-            this.RadioButtonOFF.Location = new System.Drawing.Point(7, 44);
-            this.RadioButtonOFF.Name = "RadioButtonOFF";
-            this.RadioButtonOFF.Size = new System.Drawing.Size(62, 17);
-            this.RadioButtonOFF.TabIndex = 1;
-            this.RadioButtonOFF.Text = "Wyłącz";
-            this.RadioButtonOFF.UseVisualStyleBackColor = true;
+            this.BoxDownSzybkosc.AutoSize = true;
+            this.BoxDownSzybkosc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BoxDownSzybkosc.Location = new System.Drawing.Point(425, 79);
+            this.BoxDownSzybkosc.Name = "BoxDownSzybkosc";
+            this.BoxDownSzybkosc.Size = new System.Drawing.Size(32, 24);
+            this.BoxDownSzybkosc.TabIndex = 20;
+            this.BoxDownSzybkosc.Text = "1x";
+            this.BoxDownSzybkosc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BoxDownSzybkosc.UseMnemonic = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox1.Location = new System.Drawing.Point(382, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(123, 20);
+            this.textBox1.TabIndex = 19;
+            this.textBox1.Text = "Szybkość symulacji";
+            // 
+            // BarSzybkosc
+            // 
+            this.BarSzybkosc.LargeChange = 1;
+            this.BarSzybkosc.Location = new System.Drawing.Point(382, 41);
+            this.BarSzybkosc.Maximum = 2;
+            this.BarSzybkosc.Minimum = -2;
+            this.BarSzybkosc.Name = "BarSzybkosc";
+            this.BarSzybkosc.Size = new System.Drawing.Size(104, 45);
+            this.BarSzybkosc.TabIndex = 18;
+            this.BarSzybkosc.Scroll += new System.EventHandler(this.BarSzybkosc_Scroll);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BoxDownSzybkosc);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BarSzybkosc);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BoxDownPraca);
             this.Controls.Add(this.BoxDownObc);
             this.Controls.Add(this.BoxDownUchyl);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.BoxDownSpeed);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.BoxGear);
+            this.Controls.Add(this.BoxDownGear);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.BoxUpPraca);
             this.Controls.Add(this.BarPraca);
@@ -260,6 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarSzybkosc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,8 +315,8 @@
         private System.Windows.Forms.TextBox BoxUpPraca;
         private System.Windows.Forms.TrackBar BarPraca;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox BoxGear;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox BoxDownGear;
+        private System.Windows.Forms.TextBox BoxDownSpeed;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Timer TimerTick;
         private System.Windows.Forms.Label BoxDownUchyl;
@@ -284,6 +325,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton RadioButtonOFF;
         private System.Windows.Forms.RadioButton RadioButtonOn;
+        private System.Windows.Forms.Label BoxDownSzybkosc;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TrackBar BarSzybkosc;
     }
 }
 

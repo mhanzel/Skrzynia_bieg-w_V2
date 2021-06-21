@@ -17,11 +17,14 @@ namespace Skrzynia_biegów_V2
         public static double[] ychart = new double[2];
         public int _ticks;
         public static int RPM = 1000; // revolutions per minute
+        public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
         public static int Gear = 0;
         public static int KPH = 0;// kilometers per hour
         public static int GR = 2; // Gear ratio
         public static int MinRPM = 1000;
+        public static double Diameter = 40;// w cm
         public static double _change = 0;
+        public static int speed = 0;
         public Form f2;
         public Form1()
         {
@@ -44,12 +47,25 @@ namespace Skrzynia_biegów_V2
             ControlChart();
             
         }
-        public void loop()
+        public void loop()//pętla wykonywana po tickerze
         {
             ControlChart();
             ControlGear();
+            _CheckSpeed();
         }
-        public void ControlChart()
+
+        public void _CheckSpeed()//sprawdza prędkość
+        {
+            if (BoxDownGear.Text == "N") RPMV = 0;
+            else RPMV = Convert.ToDouble(RPM / (20 / Math.Pow(GR, Gear - 1)) / 60);//ilość obrotów na sekunde i w zależności od biegu
+            double obwod = (2 * Math.PI* Diameter/2)/100;//obwód koła w metrach
+            speed = Convert.ToInt32( RPMV*obwod*3.6);//prędkość policzona poprzez obrót koła i przeliczona na km/h
+            BoxDownSpeed.Text = speed.ToString();
+            
+
+        }
+
+        public void ControlChart()//sprawdza charakterystykę
         {
             double x1 = 0;
             double x2 = 10;
@@ -60,16 +76,16 @@ namespace Skrzynia_biegów_V2
             ychart[0] = x1;
             ychart[1] = y2;
         }
-        public void ControlGear()
+        public void ControlGear()//Sprawdza biegi
         {
-            if (Form2.Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji
+            if (Form2.Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji lub pod koniec
             {
-                if (BoxGear.Text == "N"){Gear = 1; RPM = 1000;}
-                BoxGear.Text = Gear.ToString();
+                if (BoxDownGear.Text == "N") { Gear = 1; RPM = 1000; }
+                BoxDownGear.Text = Gear.ToString();
             }
             else
             {
-                BoxGear.Text = "N";RPM = 1000;
+                BoxDownGear.Text = "N"; RPM = 1000;
             }
             Engine();
             if (RadioButtonOn.Checked == true)//Jeżeli skyrznia biegów jest wykorzystywana 
@@ -130,12 +146,12 @@ namespace Skrzynia_biegów_V2
                         }
                         break;
                     default:
-                        Console.WriteLine("Błąd pracy silnika");
+                        Console.WriteLine("Błąd pracy skrzyni biegów");
                         break;
                 }
             }
         }
-        public void Engine()
+        public void Engine()//praca silnika
         {
             //funkcja silnika
             _change= 1500 * (1 + (0.05 * BarUchyl.Value)) - 1650 -(RPM*RPM*0.505/10000) - (BarObc.Value*10);
@@ -169,10 +185,10 @@ namespace Skrzynia_biegów_V2
             if (RPM > 6000 && Gear < 6) return 1;
             return 0; 
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//zapewnia pętle
         {
             _ticks++;
-            if (_ticks == 5)
+            if (_ticks >= 5)
             {
                 loop();
                 _ticks = 0;
@@ -189,6 +205,26 @@ namespace Skrzynia_biegów_V2
         private void BarUchyl_Scroll(object sender, EventArgs e)
         {
             BoxDownUchyl.Text = BarUchyl.Value.ToString()+ "°";
+        }
+        
+        private void BarSzybkosc_Scroll(object sender, EventArgs e)//szybkość symulacji
+        {
+            if (BarSzybkosc.Value < 0)
+            {
+                BoxDownSzybkosc.Text = "1/" + (-1*BarSzybkosc.Value * 2).ToString()+"x";
+                TimerTick.Interval = 50 * (-1 * BarSzybkosc.Value * 2);
+            }
+            else if (BarSzybkosc.Value > 0)
+            {
+                BoxDownSzybkosc.Text = (BarSzybkosc.Value * 2).ToString()+"x";
+                TimerTick.Interval = 50 / BarSzybkosc.Value * 2;
+            }
+            else if (BarSzybkosc.Value == 0)
+            {
+                BoxDownSzybkosc.Text = "1x";
+                TimerTick.Interval = 50;
+
+            }
         }
     }
     
