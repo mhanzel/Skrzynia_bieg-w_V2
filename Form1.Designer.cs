@@ -1,4 +1,4 @@
-﻿namespace Skrzynia_biegów_V2
+namespace Skrzynia_biegów_V2
 {
     partial class Form1
     {
@@ -330,4 +330,3 @@
         private System.Windows.Forms.TrackBar BarSzybkosc;
     }
 }
-
