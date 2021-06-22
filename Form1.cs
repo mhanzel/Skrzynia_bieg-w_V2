@@ -15,6 +15,8 @@ namespace Skrzynia_biegów_V2
     {
         public static double[] xchart = new double[2];
         public static double[] ychart = new double[2];
+        public static double[] xchart2 = new double[200]; // charakterystyka V(RPM) 
+        public static double[] ychart2 = new double[200]; // charakterystyka V(RPM)
         public int _ticks;
         public static int RPM = 1000; // revolutions per minute
         public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
@@ -53,6 +55,7 @@ namespace Skrzynia_biegów_V2
             ControlChart();
             ControlGear();
             _CheckSpeed();
+            AddPointsToVchart();
         }
 
         public void _CheckSpeed()//sprawdza prędkość
@@ -76,6 +79,16 @@ namespace Skrzynia_biegów_V2
             ychart[0] = x1;
             ychart[1] = y2;
         }
+
+        public void AddPointsToVchart()
+        {
+            
+           
+            
+            //ychart2[0] = double.Parse(BoxDownSpeed.Text);
+            //xchart2[0] = RPM;
+        }
+
         public void ControlGear()//Sprawdza biegi
         {
             if (Form2.Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji lub pod koniec
@@ -155,7 +168,7 @@ namespace Skrzynia_biegów_V2
         {
             //funkcja silnika
             _change= 1500 * (1 + (0.05 * BarUchyl.Value)) - 1650 -(RPM*RPM*0.505/10000) - (BarObc.Value*10);
-            if (_change < 0)//zaimplementowanie momentu bezwładmości
+            if (_change < 0)//zaimplementowanie momentu bezwładności
             {
                 _change = _change * (Convert.ToDouble(MinRPM) / Convert.ToDouble(RPM)) * 1.5;
             }

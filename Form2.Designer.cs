@@ -88,7 +88,7 @@
             this.aGauge1.GaugeRanges.Add(aGaugeRange5);
             this.aGauge1.GaugeRanges.Add(aGaugeRange6);
             this.aGauge1.Location = new System.Drawing.Point(328, 233);
-            this.aGauge1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.aGauge1.Margin = new System.Windows.Forms.Padding(4);
             this.aGauge1.MaxValue = 8000F;
             this.aGauge1.MinValue = 0F;
             this.aGauge1.Name = "aGauge1";
@@ -135,7 +135,7 @@
             this.aGauge2.BaseArcWidth = 2;
             this.aGauge2.Center = new System.Drawing.Point(110, 100);
             this.aGauge2.Location = new System.Drawing.Point(16, 233);
-            this.aGauge2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.aGauge2.Margin = new System.Windows.Forms.Padding(4);
             this.aGauge2.MaxValue = 260F;
             this.aGauge2.MinValue = 0F;
             this.aGauge2.Name = "aGauge2";
@@ -177,7 +177,7 @@
             this.ButtonStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ButtonStop.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonStop.Location = new System.Drawing.Point(920, 63);
-            this.ButtonStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ButtonStop.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonStop.Name = "ButtonStop";
             this.ButtonStop.Size = new System.Drawing.Size(131, 41);
             this.ButtonStop.TabIndex = 20;
@@ -191,7 +191,7 @@
             this.ButtonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ButtonStart.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonStart.Location = new System.Drawing.Point(920, 15);
-            this.ButtonStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ButtonStart.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonStart.Name = "ButtonStart";
             this.ButtonStart.Size = new System.Drawing.Size(131, 41);
             this.ButtonStart.TabIndex = 19;
@@ -255,7 +255,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Location = new System.Drawing.Point(887, 111);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(163, 22);
@@ -281,7 +281,7 @@
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(16, 20);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series2.BorderWidth = 4;
@@ -352,7 +352,7 @@
             this.Controls.Add(this.ButtonStart);
             this.Controls.Add(this.aGauge1);
             this.Controls.Add(this.aGauge2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -372,12 +372,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer TimerCzas;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Label BoxRPM;
         private System.Windows.Forms.Label label2;
         //
         private System.Windows.Forms.AGauge aGauge1;
         private System.Windows.Forms.AGauge aGauge2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label BoxRPM;
     }
 }
