@@ -134,9 +134,6 @@
             this.aGauge2.BaseArcSweep = 270;
             this.aGauge2.BaseArcWidth = 2;
             this.aGauge2.Center = new System.Drawing.Point(110, 100);
-            this.aGauge2.GaugeRanges.Add(aGaugeRange1);
-            this.aGauge2.GaugeRanges.Add(aGaugeRange2);
-            this.aGauge2.GaugeRanges.Add(aGaugeRange3);
             this.aGauge2.Location = new System.Drawing.Point(16, 233);
             this.aGauge2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.aGauge2.MaxValue = 260F;
