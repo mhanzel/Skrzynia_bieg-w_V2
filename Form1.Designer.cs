@@ -152,11 +152,10 @@ namespace Skrzynia_biegów_V2
             // 
             this.BoxDownSpeed.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxDownSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BoxDownSpeed.Location = new System.Drawing.Point(708, 187);
-            this.BoxDownSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.BoxDownSpeed.Location = new System.Drawing.Point(531, 152);
             this.BoxDownSpeed.Name = "BoxDownSpeed";
             this.BoxDownSpeed.ReadOnly = true;
-            this.BoxDownSpeed.Size = new System.Drawing.Size(143, 75);
+            this.BoxDownSpeed.Size = new System.Drawing.Size(100, 62);
             this.BoxDownSpeed.TabIndex = 9;
             this.BoxDownSpeed.Text = "000";
             this.BoxDownSpeed.TextChanged += new System.EventHandler(this.BoxDownSpeed_TextChanged);
