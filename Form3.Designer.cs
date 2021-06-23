@@ -42,7 +42,6 @@ namespace Skrzynia_biegów_V2
             // 
             chartArea1.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(13, 13);
@@ -51,17 +50,17 @@ namespace Skrzynia_biegów_V2
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "RPM";
             series1.YValuesPerPoint = 2;
             series2.BorderWidth = 3;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
-            series2.Name = "Series2";
+            series2.Name = "V";
             series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             this.chart2.Series.Add(series1);
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(460, 310);
+            this.chart2.Size = new System.Drawing.Size(654, 334);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart1";
             title1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -73,7 +72,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(984, 540);
             this.Controls.Add(this.chart2);
             this.Name = "Form3";
             this.Text = "Form3";

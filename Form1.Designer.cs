@@ -159,7 +159,6 @@ namespace Skrzynia_biegów_V2
             this.BoxDownSpeed.Size = new System.Drawing.Size(143, 75);
             this.BoxDownSpeed.TabIndex = 9;
             this.BoxDownSpeed.Text = "000";
-            this.BoxDownSpeed.TextChanged += new System.EventHandler(this.BoxDownSpeed_TextChanged);
             // 
             // textBox7
             // 
