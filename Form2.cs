@@ -55,7 +55,6 @@ namespace Skrzynia_biegów_V2
             aGauge2.Value = 0;
             Form1.xchart2.Clear();
             Form1.ychart2.Clear();
-            
         }
 
         private void TimerCzas_Tick_1(object sender, EventArgs e)

@@ -59,7 +59,7 @@ namespace Skrzynia_biegów_V2
             // BarUchyl
             // 
             this.BarUchyl.Location = new System.Drawing.Point(887, 47);
-            this.BarUchyl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarUchyl.Margin = new System.Windows.Forms.Padding(4);
             this.BarUchyl.Maximum = 45;
             this.BarUchyl.Name = "BarUchyl";
             this.BarUchyl.Size = new System.Drawing.Size(139, 56);
@@ -70,7 +70,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.BoxUpUchyl.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxUpUchyl.Location = new System.Drawing.Point(887, 15);
-            this.BoxUpUchyl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxUpUchyl.Margin = new System.Windows.Forms.Padding(4);
             this.BoxUpUchyl.Name = "BoxUpUchyl";
             this.BoxUpUchyl.ReadOnly = true;
             this.BoxUpUchyl.Size = new System.Drawing.Size(163, 22);
@@ -81,7 +81,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.BoxUpObc.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxUpObc.Location = new System.Drawing.Point(887, 155);
-            this.BoxUpObc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxUpObc.Margin = new System.Windows.Forms.Padding(4);
             this.BoxUpObc.Name = "BoxUpObc";
             this.BoxUpObc.ReadOnly = true;
             this.BoxUpObc.Size = new System.Drawing.Size(163, 22);
@@ -91,7 +91,7 @@ namespace Skrzynia_biegów_V2
             // BarObc
             // 
             this.BarObc.Location = new System.Drawing.Point(887, 187);
-            this.BarObc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarObc.Margin = new System.Windows.Forms.Padding(4);
             this.BarObc.Maximum = 30;
             this.BarObc.Minimum = -30;
             this.BarObc.Name = "BarObc";
@@ -103,7 +103,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.BoxUpPraca.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxUpPraca.Location = new System.Drawing.Point(887, 293);
-            this.BoxUpPraca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxUpPraca.Margin = new System.Windows.Forms.Padding(4);
             this.BoxUpPraca.Name = "BoxUpPraca";
             this.BoxUpPraca.ReadOnly = true;
             this.BoxUpPraca.Size = new System.Drawing.Size(163, 22);
@@ -114,7 +114,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.BarPraca.LargeChange = 1;
             this.BarPraca.Location = new System.Drawing.Point(887, 325);
-            this.BarPraca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarPraca.Margin = new System.Windows.Forms.Padding(4);
             this.BarPraca.Maximum = 3;
             this.BarPraca.Minimum = 1;
             this.BarPraca.Name = "BarPraca";
@@ -127,7 +127,7 @@ namespace Skrzynia_biegów_V2
             this.textBox4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox4.Location = new System.Drawing.Point(708, 15);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -141,7 +141,7 @@ namespace Skrzynia_biegów_V2
             this.BoxDownGear.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxDownGear.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.BoxDownGear.Location = new System.Drawing.Point(753, 47);
-            this.BoxDownGear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxDownGear.Margin = new System.Windows.Forms.Padding(4);
             this.BoxDownGear.Name = "BoxDownGear";
             this.BoxDownGear.ReadOnly = true;
             this.BoxDownGear.Size = new System.Drawing.Size(55, 75);
@@ -153,19 +153,20 @@ namespace Skrzynia_biegów_V2
             this.BoxDownSpeed.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoxDownSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.BoxDownSpeed.Location = new System.Drawing.Point(708, 187);
-            this.BoxDownSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxDownSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.BoxDownSpeed.Name = "BoxDownSpeed";
             this.BoxDownSpeed.ReadOnly = true;
             this.BoxDownSpeed.Size = new System.Drawing.Size(143, 75);
             this.BoxDownSpeed.TabIndex = 9;
             this.BoxDownSpeed.Text = "000";
+            this.BoxDownSpeed.TextChanged += new System.EventHandler(this.BoxDownSpeed_TextChanged);
             // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox7.Location = new System.Drawing.Point(708, 155);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(143, 26);
@@ -222,9 +223,9 @@ namespace Skrzynia_biegów_V2
             this.groupBox1.Controls.Add(this.RadioButtonOFF);
             this.groupBox1.Controls.Add(this.RadioButtonOn);
             this.groupBox1.Location = new System.Drawing.Point(891, 420);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(135, 95);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -234,7 +235,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.RadioButtonOFF.AutoSize = true;
             this.RadioButtonOFF.Location = new System.Drawing.Point(9, 54);
-            this.RadioButtonOFF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RadioButtonOFF.Margin = new System.Windows.Forms.Padding(4);
             this.RadioButtonOFF.Name = "RadioButtonOFF";
             this.RadioButtonOFF.Size = new System.Drawing.Size(74, 21);
             this.RadioButtonOFF.TabIndex = 1;
@@ -246,7 +247,7 @@ namespace Skrzynia_biegów_V2
             this.RadioButtonOn.AutoSize = true;
             this.RadioButtonOn.Checked = true;
             this.RadioButtonOn.Location = new System.Drawing.Point(9, 22);
-            this.RadioButtonOn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RadioButtonOn.Margin = new System.Windows.Forms.Padding(4);
             this.RadioButtonOn.Name = "RadioButtonOn";
             this.RadioButtonOn.Size = new System.Drawing.Size(67, 21);
             this.RadioButtonOn.TabIndex = 0;
@@ -271,7 +272,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Location = new System.Drawing.Point(509, 18);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(163, 22);
@@ -282,7 +283,7 @@ namespace Skrzynia_biegów_V2
             // 
             this.BarSzybkosc.LargeChange = 1;
             this.BarSzybkosc.Location = new System.Drawing.Point(509, 50);
-            this.BarSzybkosc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarSzybkosc.Margin = new System.Windows.Forms.Padding(4);
             this.BarSzybkosc.Maximum = 2;
             this.BarSzybkosc.Minimum = -2;
             this.BarSzybkosc.Name = "BarSzybkosc";
@@ -312,7 +313,7 @@ namespace Skrzynia_biegów_V2
             this.Controls.Add(this.BarObc);
             this.Controls.Add(this.BoxUpUchyl);
             this.Controls.Add(this.BarUchyl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

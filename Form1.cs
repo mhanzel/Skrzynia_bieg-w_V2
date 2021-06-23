@@ -56,7 +56,6 @@ namespace Skrzynia_biegów_V2
             ControlChart();
             ControlGear();
             _CheckSpeed();
-            AddPointsToVchart();
             if (Form2.chart2 != null)
                 Form2.chart2.Series["Series1"].Points.DataBindXY(xchart2, ychart2);
         }
@@ -83,7 +82,7 @@ namespace Skrzynia_biegów_V2
             ychart[1] = y2;
         }
 
-        public void AddPointsToVchart()
+        public void AddPointsToVchart()  //dodanie punktów do wykresu RPM(V)
         {
             xchart2.Add(double.Parse(BoxDownSpeed.Text));
             ychart2.Add(RPM);
@@ -238,6 +237,11 @@ namespace Skrzynia_biegów_V2
                 TimerTick.Interval = 50;
 
             }
+        }
+
+        private void BoxDownSpeed_TextChanged(object sender, EventArgs e)
+        {
+            AddPointsToVchart();
         }
     }
     

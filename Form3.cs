@@ -16,6 +16,8 @@ namespace Skrzynia_biegów_V2
         public Form3()
         {
             InitializeComponent();
+            chart2.ChartAreas[0].AxisX.Title = "V";
+            chart2.ChartAreas[0].AxisY.Title = "RPM";
             chart2.ChartAreas[0].AxisX.Minimum = 0;
             chart2.Series["Series1"].Points.DataBindXY(Form1.xchart2, Form1.ychart2);
         }
