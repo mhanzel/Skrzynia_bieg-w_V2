@@ -32,9 +32,9 @@ namespace Skrzynia_biegów_V2
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.RefreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,14 @@ namespace Skrzynia_biegów_V2
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.YValuesPerPoint = 2;
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            series2.YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             this.chart2.Series.Add(series1);
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(460, 310);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart1";
@@ -62,22 +69,11 @@ namespace Skrzynia_biegów_V2
             title1.Text = "Wykres zależności obrotów silnika od prędkości samochodu";
             this.chart2.Titles.Add(title1);
             // 
-            // RefreshButton
-            // 
-            this.RefreshButton.Location = new System.Drawing.Point(681, 405);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(107, 33);
-            this.RefreshButton.TabIndex = 1;
-            this.RefreshButton.Text = "Odśwież";
-            this.RefreshButton.UseVisualStyleBackColor = true;
-            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.chart2);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -89,7 +85,6 @@ namespace Skrzynia_biegów_V2
         }
 
         #endregion
-        private System.Windows.Forms.Button RefreshButton;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }

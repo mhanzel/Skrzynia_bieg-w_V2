@@ -17,6 +17,7 @@ namespace Skrzynia_biegów_V2
         public static double[] ychart = new double[2];
         public static List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
         public static List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
+        public static List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
         public int _ticks;
         public static int RPM = 1000; // revolutions per minute
         public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
@@ -56,8 +57,12 @@ namespace Skrzynia_biegów_V2
             ControlChart();
             ControlGear();
             _CheckSpeed();
+            AddPointsToVchart();
             if (Form2.chart2 != null)
+            {
                 Form2.chart2.Series["Series1"].Points.DataBindXY(xchart2, ychart2);
+                Form2.chart2.Series["Series2"].Points.DataBindXY(xchart2, y2chart2);
+            }
         }
 
         public void _CheckSpeed()//sprawdza prędkość
@@ -84,8 +89,18 @@ namespace Skrzynia_biegów_V2
 
         public void AddPointsToVchart()  //dodanie punktów do wykresu RPM(V)
         {
-            xchart2.Add(double.Parse(BoxDownSpeed.Text));
-            ychart2.Add(RPM);
+            if(Form2.Praca == true)
+            {
+                int xtime = Form2._sec;
+                if (Form2._min > 0)
+                {
+                    xtime += Form2._min * 60;
+                }
+                xchart2.Add(xtime);
+                ychart2.Add(RPM);
+                y2chart2.Add(double.Parse(BoxDownSpeed.Text));
+            }
+            
         }
 
         public void ControlGear()//Sprawdza biegi
@@ -241,7 +256,7 @@ namespace Skrzynia_biegów_V2
 
         private void BoxDownSpeed_TextChanged(object sender, EventArgs e)
         {
-            AddPointsToVchart();
+            //AddPointsToVchart();
         }
     }
     

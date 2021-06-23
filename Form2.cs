@@ -15,9 +15,9 @@ namespace Skrzynia_biegów_V2
     public partial class Form2 : Form
     {
         public static Boolean Praca = false;
-        public int _time;
-        public int _sec = 0;
-        public int _min = 0;
+        public static int _time;
+        public static int _sec = 0;
+        public static int _min = 0;
         public static Chart chart2 = null;
         public Form2()
         {
@@ -39,7 +39,9 @@ namespace Skrzynia_biegów_V2
         {
             TimerCzas.Start();
             Praca = true;
-            //chart2.Series["Series1"].Points.DataBindXY(Form1.xchart2, Form1.ychart2);
+            Form1.xchart2.Clear();
+            Form1.ychart2.Clear();
+            Form1.y2chart2.Clear();
         }
 
         private void ButtonStop_Click_1(object sender, EventArgs e)
@@ -53,8 +55,7 @@ namespace Skrzynia_biegów_V2
             BoxRPM.Text = "0";
             aGauge1.Value = 0;
             aGauge2.Value = 0;
-            Form1.xchart2.Clear();
-            Form1.ychart2.Clear();
+           
         }
 
         private void TimerCzas_Tick_1(object sender, EventArgs e)
