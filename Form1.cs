@@ -208,7 +208,7 @@ namespace Skrzynia_biegów_V2
 
         private void BarUchyl_Scroll(object sender, EventArgs e)
         {
-            BoxDownUchyl.Text = BarUchyl.Value.ToString()+ "°";
+            BoxDownUchyl.Text = (BarUchyl.Value*2).ToString()+ "°";
         }
         
         private void BarSzybkosc_Scroll(object sender, EventArgs e)//szybkość symulacji
