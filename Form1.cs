@@ -37,7 +37,6 @@ namespace Skrzynia_biegów_V2
             TimerTick.Start();
             f2 = new Form2();
             f2.Show();
-            
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -60,8 +59,8 @@ namespace Skrzynia_biegów_V2
             AddPointsToVchart();
             if (Form2.chart2 != null)
             {
-                Form2.chart2.Series["Series1"].Points.DataBindXY(xchart2, ychart2);
-                Form2.chart2.Series["Series2"].Points.DataBindXY(xchart2, y2chart2);
+                Form2.chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
+                Form2.chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
             }
         }
 
@@ -256,11 +255,6 @@ namespace Skrzynia_biegów_V2
                 TimerTick.Interval = 50;
 
             }
-        }
-
-        private void BoxDownSpeed_TextChanged(object sender, EventArgs e)
-        {
-            //AddPointsToVchart();
         }
     }
     
