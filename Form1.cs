@@ -58,11 +58,11 @@ namespace Skrzynia_biegów_V2
         public void _CheckSpeed()//sprawdza prędkość
         {
             if (BoxDownGear.Text == "N") RPMV = 0;
-            else RPMV = Convert.ToDouble(RPM / (20 / Math.Pow(GR, Gear - 1)) / 60 );//ilość obrotów na sekunde i w zależności od biegu
+            else RPMV = Convert.ToDouble(RPM / (15 / Math.Pow(GR, Gear - 1)) / 60 );//ilość obrotów na sekunde i w zależności od biegu
             double obwod = (2 * Math.PI* Diameter/2)/100;//obwód koła w metrach
             speed = Convert.ToInt32( RPMV*obwod*3.6);//prędkość policzona poprzez obrót koła i przeliczona na km/h
             BoxDownSpeed.Text = speed.ToString();
-
+            
         }
 
         public void ControlChart()//sprawdza charakterystykę
@@ -169,20 +169,24 @@ namespace Skrzynia_biegów_V2
         }
         public int CheckEko()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
-            if (RPM < 2000 && Gear > 1) return -1;
-            if (RPM > 4000 && Gear < 6) return 1;
+            if (RPM < 3000 && BarUchyl.Value > 30 && Gear > 1) return -1;//szybkie przyspieszanie "knock down"
+            if (RPM > 6500 && BarUchyl.Value > 30 && Gear < 6) return  1;//wbijanie wyższego biegów w przyspieszaniu
+            if (RPM < 1600 && Gear > 1) return -1;//normalna praca
+            if (RPM > 2300 && Gear < 6 && BarUchyl.Value < 30) return 1;//normalna praca
             return 0;
         }
         public int CheckNormal()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
-            if (RPM < 2000 && Gear > 1) return -1;
-            if (RPM > 5000 && Gear < 6) return 1;
+            if (RPM < 3000 && BarUchyl.Value > 30 && Gear > 1) return -1;//szybkie przyspieszanie "knock down"
+            if (RPM > 6500 && BarUchyl.Value > 30 && Gear < 6) return 1;//wbijanie wyższego biegów w przyspieszaniu
+            if (RPM < 2100 && Gear > 1) return -1;//normalna praca
+            if (RPM > 3100 && Gear < 6 && BarUchyl.Value < 30) return 1;//normalna praca
             return 0; 
         }
         public int CheckSport()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
-            if (RPM < 2000 && Gear > 1) return -1;
-            if (RPM > 6000 && Gear < 6) return 1;
+            if (RPM < 4500 && Gear > 1) return -1;//normalna praca
+            if (RPM > 6500 && Gear < 6) return 1;//normalna praca
             return 0; 
         }
         private void timer1_Tick(object sender, EventArgs e)//zapewnia pętle
