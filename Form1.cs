@@ -154,7 +154,7 @@ namespace Skrzynia_biegów_V2
         public void Engine()//praca silnika
         {
             //funkcja silnika
-            _change= 1500 * (1 + (0.05 * BarUchyl.Value)) - 1650 -(RPM*RPM*0.505/10000) - (BarObc.Value*10);
+            _change= 1500 * (1 + (0.035 * BarUchyl.Value)) - 1650 -(RPM*RPM*0.505/10000) - (BarObc.Value*10);
             if (_change < 0)//zaimplementowanie momentu bezwładmości
             {
                 _change = _change * (Convert.ToDouble(MinRPM) / Convert.ToDouble(RPM)) * 1.5;
@@ -170,7 +170,7 @@ namespace Skrzynia_biegów_V2
         public int CheckEko()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
             if (RPM < 3000 && BarUchyl.Value > 30 && Gear > 1) return -1;//szybkie przyspieszanie "knock down"
-            if (RPM > 6500 && BarUchyl.Value > 30 && Gear < 6) return  1;//wbijanie wyższego biegów w przyspieszaniu
+            if (RPM > 5000 && BarUchyl.Value > 30 && Gear < 6) return  1;//wbijanie wyższego biegów w przyspieszaniu
             if (RPM < 1600 && Gear > 1) return -1;//normalna praca
             if (RPM > 2300 && Gear < 6 && BarUchyl.Value < 30) return 1;//normalna praca
             return 0;
@@ -178,7 +178,7 @@ namespace Skrzynia_biegów_V2
         public int CheckNormal()//jeżeli trzeba zmienić bieg na wyższy wstaw 1 jeżeli nie 0 jeżeli na niższy to -1
         {
             if (RPM < 3000 && BarUchyl.Value > 30 && Gear > 1) return -1;//szybkie przyspieszanie "knock down"
-            if (RPM > 6500 && BarUchyl.Value > 30 && Gear < 6) return 1;//wbijanie wyższego biegów w przyspieszaniu
+            if (RPM > 6000 && BarUchyl.Value > 30 && Gear < 6) return 1;//wbijanie wyższego biegów w przyspieszaniu
             if (RPM < 2100 && Gear > 1) return -1;//normalna praca
             if (RPM > 3100 && Gear < 6 && BarUchyl.Value < 30) return 1;//normalna praca
             return 0; 
