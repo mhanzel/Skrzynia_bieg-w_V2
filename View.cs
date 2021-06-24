@@ -271,9 +271,9 @@ namespace Skrzynia_biegów_V2
         {
             TimerCzas.Start();
             Praca = true;
-             xchart2.Clear();
-             ychart2.Clear();
-             y2chart2.Clear();
+            xchart2.Clear();
+            ychart2.Clear();
+            y2chart2.Clear();
         }
 
         private void ButtonStop_Click(object sender, EventArgs e)
