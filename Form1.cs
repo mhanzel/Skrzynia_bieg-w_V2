@@ -13,6 +13,15 @@ namespace Skrzynia_biegów_V2
 {
     public partial class Form1 : Form
     {
+        public Form1()
+        {
+            InitializeComponent();
+            Start();
+            TimerTick.Start();
+            f2 = new Form2();
+            f2.Show();
+        }
+
         public static double[] xchart = new double[2];
         public static double[] ychart = new double[2];
         public static List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
@@ -30,14 +39,7 @@ namespace Skrzynia_biegów_V2
         public static int speed = 1;
         public static int MaxSpeed = 260;
         public Form f2;
-        public Form1()
-        {
-            InitializeComponent();
-            Start();
-            TimerTick.Start();
-            f2 = new Form2();
-            f2.Show();
-        }
+       
         private void Form1_Load(object sender, EventArgs e)
         {
             

@@ -15,28 +15,28 @@ namespace Skrzynia_biegów_V2
     public partial class View : Form
     {
         //f1
-        public static double[] xchart = new double[2];
-        public static double[] ychart = new double[2];
-        public static List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
-        public static List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
-        public static List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
+        public double[] xchart = new double[2];
+        public double[] ychart = new double[2];
+        public List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
+        public List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
+        public List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
         public int _ticks;
-        public static int RPM = 1000; // revolutions per minute
-        public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
-        public static int Gear = 0;
-        public static int KPH = 0;// kilometers per hour
-        public static double GR = 1.5; // Gear ratio
-        public static int MinRPM = 1000;
-        public static double Diameter = 40;// w cm
-        public static double _change = 0;
-        public static int speed = 1;
-        public static int MaxSpeed = 260;
+        public int RPM = 1000; // revolutions per minute
+        public double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
+        public int Gear = 0;
+        public int KPH = 0;// kilometers per hour
+        public double GR = 1.5; // Gear ratio
+        public int MinRPM = 1000;
+        public double Diameter = 40;// w cm
+        public double _change = 0;
+        public int speed = 1;
+        public int MaxSpeed = 260;
 
-        public static Boolean Praca = false;
-        public static int _time;
-        public static int _sec = 0;
-        public static int _min = 0;
-        public static Chart chart2 = null;
+        public Boolean Praca = false;
+        public int _time;
+        public int _sec = 0;
+        public int _min = 0;
+        public static Chart chart2 = null; // jedyne statyczne pole.
         public View()
         {
             InitializeComponent();
@@ -50,8 +50,13 @@ namespace Skrzynia_biegów_V2
             chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
             chart1.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
             chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
-            chart1.Series["Series1"].Points.DataBindXY(Form1.xchart, Form1.ychart);
+            chart1.Series["Series1"].Points.DataBindXY( xchart,  ychart);
             BoxRPM.Text = "0";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
         public void Start()//element wykonywany raz na starcie programu
         {
@@ -68,10 +73,10 @@ namespace Skrzynia_biegów_V2
             ControlGear();
             _CheckSpeed();
             AddPointsToVchart();
-            if (Form2.chart2 != null)
+            if ( chart2 != null)
             {
-                Form2.chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
-                Form2.chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
+                 chart2.Series["RPM"].Points.DataBindXY( xchart2,  ychart2);
+                 chart2.Series["V"].Points.DataBindXY( xchart2,  y2chart2);
             }
         }
 
@@ -82,7 +87,7 @@ namespace Skrzynia_biegów_V2
             double obwod = (2 * Math.PI * Diameter / 2) / 100;//obwód koła w metrach
             speed = Convert.ToInt32(RPMV * obwod * 3.6);//prędkość policzona poprzez obrót koła i przeliczona na km/h
             BoxDownSpeed.Text = speed.ToString();
-
+            aGauge2.Value = speed;
         }
 
         public void ControlChart()//sprawdza charakterystykę
@@ -91,31 +96,31 @@ namespace Skrzynia_biegów_V2
             double x2 = 10;
             double y2 = 0;
             if (BarObc.Value != 50) { y2 = (x2 * (BarObc.Value)) / 10; }
-            xchart[0] = x1;//stale parametry x
-            xchart[1] = x2;
-            ychart[0] = x1;
-            ychart[1] = y2;
+             xchart[0] = x1;//stale parametry x
+             xchart[1] = x2;
+             ychart[0] = x1;
+             ychart[1] = y2;
         }
 
         public void AddPointsToVchart()  //dodanie punktów do wykresu RPM(V)
         {
-            if (Form2.Praca == true)
+            if ( Praca == true)
             {
-                int xtime = Form2._sec;
-                if (Form2._min > 0)
+                int xtime =  _sec;
+                if ( _min > 0)
                 {
-                    xtime += Form2._min * 60;
+                    xtime +=  _min * 60;
                 }
-                xchart2.Add(xtime);
-                ychart2.Add(RPM);
-                y2chart2.Add(double.Parse(BoxDownSpeed.Text));
+                 xchart2.Add(xtime);
+                 ychart2.Add(RPM);
+                 y2chart2.Add(double.Parse(BoxDownSpeed.Text));
             }
 
         }
 
         public void ControlGear()//Sprawdza biegi
         {
-            if (Form2.Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji lub pod koniec
+            if ( Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji lub pod koniec
             {
                 if (BoxDownGear.Text == "N") { Gear = 1; RPM = 1000; }
                 BoxDownGear.Text = Gear.ToString();
@@ -133,7 +138,7 @@ namespace Skrzynia_biegów_V2
                     case 1:
                         Console.WriteLine("Praca w trybie ekonomicznym");
                         BoxDownPraca.Text = "Eko";
-                        if (Form2.Praca == true)
+                        if ( Praca == true)
                         {
 
                             if (CheckEko() == 1)
@@ -151,7 +156,7 @@ namespace Skrzynia_biegów_V2
                     case 2:
                         Console.WriteLine("Praca w trybie normalnym");
                         BoxDownPraca.Text = "Normal";
-                        if (Form2.Praca == true)
+                        if ( Praca == true)
                         {
                             if (CheckNormal() == 1)
                             {
@@ -168,7 +173,7 @@ namespace Skrzynia_biegów_V2
                     case 3:
                         Console.WriteLine("Praca w trybie sport");
                         BoxDownPraca.Text = "Sport";
-                        if (Form2.Praca == true)
+                        if ( Praca == true)
                         {
                             if (CheckSport() == 1)
                             {
@@ -228,7 +233,12 @@ namespace Skrzynia_biegów_V2
         }
         private void timer1_Tick(object sender, EventArgs e)//zapewnia pętle
         {
-
+            _ticks++;
+            if (_ticks >= 5)
+            {
+                loop();
+                _ticks = 0;
+            }
         }
 
         private void BarObc_Scroll(object sender, EventArgs e)
@@ -245,35 +255,33 @@ namespace Skrzynia_biegów_V2
 
         private void BarSzybkosc_Scroll(object sender, EventArgs e)//szybkość symulacji
         {
+            if (BarSzybkosc.Value < 0)
+            {
+                BarSzybkosc.Text = "1/" + (-1 * BarSzybkosc.Value * 2).ToString() + "x";
+                TimerTick.Interval = 50 * (-1 * BarSzybkosc.Value * 2);
+            }
+            else if (BarSzybkosc.Value > 0)
+            {
+                BarSzybkosc.Text = (BarSzybkosc.Value * 2).ToString() + "x";
+                TimerTick.Interval = 50 / BarSzybkosc.Value * 2;
+            }
+            else if (BarSzybkosc.Value == 0)
+            {
+                BarSzybkosc.Text = "1x";
+                TimerTick.Interval = 50;
 
+            }
         }
-
-        private void TimerCzas_Tick_1(object sender, EventArgs e)
-        {
-
-        }
-        private void aGauge1_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new Form3();
-            form3.Show();
-            chart2 = form3.chart2;
-        }
-
-        private void ButtonStart_Click(object sender, EventArgs e)
+        public void ButtonStart_Click(object sender, EventArgs e)
         {
             TimerCzas.Start();
             Praca = true;
-            Form1.xchart2.Clear();
-            Form1.ychart2.Clear();
-            Form1.y2chart2.Clear();
+             xchart2.Clear();
+             ychart2.Clear();
+             y2chart2.Clear();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonStop_Click(object sender, EventArgs e)
         {
             TimerCzas.Stop();
             _sec = 0;
@@ -285,7 +293,41 @@ namespace Skrzynia_biegów_V2
             aGauge1.Value = 0;
             aGauge2.Value = 0;
         }
-    }
 
+        private void TimerCzas_Tick_1(object sender, EventArgs e)
+        {
+            _time++;
+            if (_time == 10)//zegar
+            {
+                ++_sec;
+                BoxSec.Text = _sec.ToString();
+                if (_sec == 61)
+                {
+                    ++_min;
+                    BoxMin.Text = _min.ToString();
+                    _sec = 0;
+                    BoxSec.Text = _sec.ToString();
+                }
+                _time = 0;
+            }
+            if (_time > 1)//loopa do wstawiania zmiennych
+            {
+                chart1.Series["Series1"].Points.DataBindXY( xchart,  ychart);
+                BoxRPM.Text =  RPM.ToString();
+                aGauge1.Value =  RPM;
+            }
+        }
+        private void aGauge1_ValueInRangeChanged(object sender, ValueInRangeChangedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+            View.chart2 = form3.chart2;
+        }
+    }
 }
 
