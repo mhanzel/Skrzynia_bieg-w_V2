@@ -155,7 +155,7 @@ namespace Skrzynia_biegów_V2
             this.BoxDownSpeed.Location = new System.Drawing.Point(531, 152);
             this.BoxDownSpeed.Name = "BoxDownSpeed";
             this.BoxDownSpeed.ReadOnly = true;
-            this.BoxDownSpeed.Size = new System.Drawing.Size(100, 62);
+            this.BoxDownSpeed.Size = new System.Drawing.Size(117, 75);
             this.BoxDownSpeed.TabIndex = 9;
             this.BoxDownSpeed.Text = "000";
             // 
@@ -285,7 +285,7 @@ namespace Skrzynia_biegów_V2
             this.BarSzybkosc.Maximum = 2;
             this.BarSzybkosc.Minimum = -2;
             this.BarSzybkosc.Name = "BarSzybkosc";
-            this.BarSzybkosc.Size = new System.Drawing.Size(139, 56);
+            this.BarSzybkosc.Size = new System.Drawing.Size(163, 56);
             this.BarSzybkosc.TabIndex = 18;
             this.BarSzybkosc.Scroll += new System.EventHandler(this.BarSzybkosc_Scroll);
             // 

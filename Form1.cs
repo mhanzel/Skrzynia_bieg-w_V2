@@ -15,9 +15,12 @@ namespace Skrzynia_biegów_V2
     {
         public static double[] xchart = new double[2];
         public static double[] ychart = new double[2];
-        public static List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
+        public static List<double> xchart2 = new List<double>(); // czas
+        public static List<double> xchart3 = new List<double>(); // czas
         public static List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
         public static List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
+        public static List<double> ychart3 = new List<double>(); // Uchył
+        public static List<double> y2chart3 = new List<double>(); // regulacja obciążenia
         public int _ticks;
         public static int RPM = 1000; // revolutions per minute
         public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
@@ -62,6 +65,12 @@ namespace Skrzynia_biegów_V2
                 Form2.chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
                 Form2.chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
             }
+            AddPointsToUchart();
+            if (Form2.chart3 != null)
+            {
+                Form2.chart3.Series["Uchył"].Points.DataBindXY(xchart3, ychart3);
+                Form2.chart3.Series["Obciążenie"].Points.DataBindXY(xchart3, y2chart3);
+            }
         }
 
         public void _CheckSpeed()//sprawdza prędkość
@@ -86,7 +95,7 @@ namespace Skrzynia_biegów_V2
             ychart[1] = y2;
         }
 
-        public void AddPointsToVchart()  //dodanie punktów do wykresu RPM(V)
+        public void AddPointsToVchart()  //dodanie punktów do wykresu RPM i V
         {
             if(Form2.Praca == true)
             {
@@ -100,6 +109,21 @@ namespace Skrzynia_biegów_V2
                 y2chart2.Add(double.Parse(BoxDownSpeed.Text));
             }
             
+        }
+
+        public void AddPointsToUchart() // dodanie punktów do wykresu uchyłu
+        {
+            if (Form2.Praca == true)
+            {
+                int xtime = Form2._sec;
+                if (Form2._min > 0)
+                {
+                    xtime += Form2._min * 60;
+                }
+                xchart3.Add(xtime);
+                ychart3.Add(2 * BarUchyl.Value);
+                y2chart3.Add(BarObc.Value);
+            }
         }
 
         public void ControlGear()//Sprawdza biegi
@@ -253,7 +277,6 @@ namespace Skrzynia_biegów_V2
             {
                 BoxDownSzybkosc.Text = "1x";
                 TimerTick.Interval = 50;
-
             }
         }
     }

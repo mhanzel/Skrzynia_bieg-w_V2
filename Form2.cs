@@ -19,6 +19,7 @@ namespace Skrzynia_biegów_V2
         public static int _sec = 0;
         public static int _min = 0;
         public static Chart chart2 = null;
+        public static Chart chart3 = null;
         public Form2()
         {
             InitializeComponent();
@@ -42,6 +43,9 @@ namespace Skrzynia_biegów_V2
             Form1.xchart2.Clear();
             Form1.ychart2.Clear();
             Form1.y2chart2.Clear();
+            Form1.xchart3.Clear();
+            Form1.ychart3.Clear();
+            Form1.y2chart3.Clear();
         }
 
         private void ButtonStop_Click_1(object sender, EventArgs e)
@@ -91,6 +95,7 @@ namespace Skrzynia_biegów_V2
             Form3 form3 = new Form3();
             form3.Show();
             chart2 = form3.chart2;
+            chart3 = form3.chart3;
         }
     }
 }
