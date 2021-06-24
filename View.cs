@@ -72,12 +72,7 @@ namespace Skrzynia_biegów_V2
             ControlChart();
             ControlGear();
             _CheckSpeed();
-            AddPointsToVchart();
-            if ( chart2 != null)
-            {
-                 chart2.Series["RPM"].Points.DataBindXY( xchart2,  ychart2);
-                 chart2.Series["V"].Points.DataBindXY( xchart2,  y2chart2);
-            }
+            
         }
 
         public void _CheckSpeed()//sprawdza prędkość
@@ -309,6 +304,12 @@ namespace Skrzynia_biegów_V2
                     BoxSec.Text = _sec.ToString();
                 }
                 _time = 0;
+                AddPointsToVchart();//wyświetlanie i liczenie charakterystyk
+                if (chart2 != null)
+                {
+                    chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
+                    chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
+                }
             }
             if (_time > 1)//loopa do wstawiania zmiennych
             {
