@@ -35,7 +35,7 @@ namespace Skrzynia_biegów_V2
         }
         
         
-        private void ButtonStart_Click_1(object sender, EventArgs e)
+        public void ButtonStart_Click_1(object sender, EventArgs e)
         {
             TimerCzas.Start();
             Praca = true;
