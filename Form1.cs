@@ -15,12 +15,12 @@ namespace Skrzynia_biegów_V2
     {
         public static double[] xchart = new double[2];
         public static double[] ychart = new double[2];
-        public static List<double> xchart2 = new List<double>(); // czas
-        public static List<double> xchart3 = new List<double>(); // czas
-        public static List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
-        public static List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
-        public static List<double> ychart3 = new List<double>(); // Uchył
-        public static List<double> y2chart3 = new List<double>(); // regulacja obciążenia
+        public static List<double> xchart2 = new List<double>(); // czas vhart2
+        public static List<double> ychart2 = new List<double>(); //  RMP chart2
+        public static List<double> y2chart2 = new List<double>(); // V chart2
+        public static List<double> xchart3 = new List<double>(); // czas vhart3
+        public static List<double> ychart3 = new List<double>(); // Uchył chart3
+        public static List<double> y2chart3 = new List<double>(); // regulacja obciążenia chart3
         public int _ticks;
         public static int RPM = 1000; // revolutions per minute
         public static double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
