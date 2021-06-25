@@ -88,7 +88,7 @@ namespace Skrzynia_biegów_V2
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Color = System.Drawing.Color.Red;
             series3.Legend = "Legend1";
-            series3.Name = "Uchył";
+            series3.Name = "Prędkość";
             series4.BorderWidth = 3;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -102,7 +102,7 @@ namespace Skrzynia_biegów_V2
             this.chart3.Text = "chart1";
             title2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             title2.Name = "Title1";
-            title2.Text = "Wykres zależności uchyłu przepustnicy i regulacji obciążenia w czasie ";
+            title2.Text = "Wykres zależności prędkości od regulacji obciążenia w czasie ";
             this.chart3.Titles.Add(title2);
             // 
             // Form3

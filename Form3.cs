@@ -29,9 +29,9 @@ namespace Skrzynia_biegów_V2
             chart2.Series[0].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Primary;
             chart2.Series[1].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             chart3.ChartAreas[0].AxisX.Title = "czas";
-            chart3.ChartAreas[0].AxisY.Title = "Uchył przepustnicy, regulacja obciążenia";
+            chart3.ChartAreas[0].AxisY.Title = "Prędkość, regulacja obciążenia";
             chart3.ChartAreas[0].AxisX.Minimum = 0;
-            chart3.Series["Uchył"].Points.DataBindXY(View.xchart3, View.ychart3);
+            chart3.Series["Prędkość"].Points.DataBindXY(View.xchart3, View.ychart3);
             chart3.Series["Obciążenie"].Points.DataBindXY(View.xchart3, View.y2chart3);
         }
                 

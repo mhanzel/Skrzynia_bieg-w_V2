@@ -127,7 +127,8 @@ namespace Skrzynia_biegów_V2
                     xtime += _min * 60;
                 }
                 xchart3.Add(xtime);
-                ychart3.Add(2 * BarUchyl.Value);
+                //ychart3.Add(2 * BarUchyl.Value);
+                ychart3.Add(speed);
                 y2chart3.Add(BarObc.Value);
             }
         }
@@ -367,7 +368,7 @@ namespace Skrzynia_biegów_V2
                 AddPointsToUchart();
                 if (chart3 != null)
                 {
-                    chart3.Series["Uchył"].Points.DataBindXY(xchart3, ychart3);
+                    chart3.Series["Prędkość"].Points.DataBindXY(xchart3, ychart3);
                     chart3.Series["Obciążenie"].Points.DataBindXY(xchart3, y2chart3);
                 }
             }
