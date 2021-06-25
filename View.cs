@@ -14,16 +14,16 @@ namespace Skrzynia_biegów_V2
 
     public partial class View : Form
     {
-        //f1
+        Form3 form3;
+        static bool f3closed = true; // flaga kontrolująca formularz z charakterystykami.
+        // dane do charakterystyki obciążenia
         public double[] xchart = new double[2];
         public double[] ychart = new double[2];
-       // public List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
-        public static List<double> xchart2 = new List<double>(); // czas
-        public static List<double> xchart3 = new List<double>(); // czas
-        public List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
-        public List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
-        public static List<double> ychart3 = new List<double>(); // Uchył
-        public static List<double> y2chart3 = new List<double>(); // regulacja obciążenia
+        public List<double> xchart2 = new List<double>(); // czas 
+        public List<double> ychart2 = new List<double>(); // charakterystyka dane RPM
+        public List<double> y2chart2 = new List<double>(); // [V]elocity data on chart
+        public List<double> ychart3 = new List<double>(); // Uchył
+        public List<double> y2chart3 = new List<double>(); // regulacja obciążenia
         public int _ticks;
         public int RPM = 1000; // revolutions per minute
         public double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
@@ -40,8 +40,8 @@ namespace Skrzynia_biegów_V2
         public int _time;
         public int _sec = 0;
         public int _min = 0;
-        public static Chart chart2 = null; // jedyne statyczne pole.
-        public static Chart chart3 = null;
+        /*public static Chart chart2 = null;
+        public static Chart chart3 = null;*/
         public View()
         {
             InitializeComponent();
@@ -57,11 +57,6 @@ namespace Skrzynia_biegów_V2
             chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
             chart1.Series["Series1"].Points.DataBindXY( xchart,  ychart);
             BoxRPM.Text = "0";
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
         public void Start()//element wykonywany raz na starcie programu
         {
@@ -111,28 +106,14 @@ namespace Skrzynia_biegów_V2
                 {
                     xtime +=  _min * 60;
                 }
-                 xchart2.Add(xtime);
-                 ychart2.Add(RPM);
-                 y2chart2.Add(double.Parse(BoxDownSpeed.Text));
-            }
-
-        }
-        public void AddPointsToUchart() // dodanie punktów do wykresu uchyłu
-        {
-            if (Praca == true)
-            {
-                int xtime = _sec;
-                if (_min > 0)
-                {
-                    xtime += _min * 60;
-                }
-                xchart3.Add(xtime);
-                //ychart3.Add(2 * BarUchyl.Value);
+                xchart2.Add(xtime);
+                ychart2.Add(RPM);
+                y2chart2.Add(double.Parse(BoxDownSpeed.Text));
                 ychart3.Add(speed);
                 y2chart3.Add(BarObc.Value);
             }
-        }
 
+        }
         public void ControlGear()//Sprawdza biegi
         {
             if ( Praca == true)//wykowywana jednorazowo po rozpoczeciu symulacji lub pod koniec
@@ -287,7 +268,6 @@ namespace Skrzynia_biegów_V2
         {
             if (BarObc.Value == 50) { BoxDownObc.Text = "0" + "°"; }
             else if (BarObc.Value != 50) { BoxDownObc.Text = (BarObc.Value).ToString() + "°"; }
-            //else if (BarObc.Value < 50) { BoxDownObc.Text = (BarObc.Value-50).ToString() + "°"; }
         }
 
         private void BarUchyl_Scroll(object sender, EventArgs e)
@@ -333,7 +313,6 @@ namespace Skrzynia_biegów_V2
             xchart2.Clear();
             ychart2.Clear();
             y2chart2.Clear();
-            xchart3.Clear();
             ychart3.Clear();
             y2chart3.Clear();
             DPRtrack.Value = 2;
@@ -360,16 +339,12 @@ namespace Skrzynia_biegów_V2
                 }
                 _time = 0;
                 AddPointsToVchart();//wyświetlanie i liczenie charakterystyk
-                if (chart2 != null)
+                if (!f3closed)
                 {
-                    chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
-                    chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
-                }
-                AddPointsToUchart();
-                if (chart3 != null)
-                {
-                    chart3.Series["Prędkość"].Points.DataBindXY(xchart3, ychart3);
-                    chart3.Series["Obciążenie"].Points.DataBindXY(xchart3, y2chart3);
+                    form3.chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
+                    form3.chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
+                    form3.chart3.Series["Prędkość"].Points.DataBindXY(xchart2, ychart3);
+                    form3.chart3.Series["Obciążenie"].Points.DataBindXY(xchart2, y2chart3);
                 }
             }
             if (_time > 1)//loopa do wstawiania zmiennych
@@ -386,10 +361,22 @@ namespace Skrzynia_biegów_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
-            form3.Show();
-            View.chart2 = form3.chart2;
-            View.chart3 = form3.chart3;
+            if (f3closed)
+            {
+                form3 = new Form3();
+                form3.chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
+                form3.chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
+                form3.chart3.Series["Prędkość"].Points.DataBindXY(xchart2, ychart3);
+                form3.chart3.Series["Obciążenie"].Points.DataBindXY(xchart2, y2chart3);
+                form3.Show();
+            }
+            else
+                form3.BringToFront();
+            f3closed = false;
+        }
+        public static void close_form3()
+        {
+            f3closed = true;
         }
     }
 }
