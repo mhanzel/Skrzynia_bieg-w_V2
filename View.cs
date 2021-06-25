@@ -40,8 +40,6 @@ namespace Skrzynia_biegów_V2
         public int _time;
         public int _sec = 0;
         public int _min = 0;
-        /*public static Chart chart2 = null;
-        public static Chart chart3 = null;*/
         public View()
         {
             InitializeComponent();
