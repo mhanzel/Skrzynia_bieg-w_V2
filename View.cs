@@ -17,9 +17,13 @@ namespace Skrzynia_biegów_V2
         //f1
         public double[] xchart = new double[2];
         public double[] ychart = new double[2];
-        public List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
+       // public List<double> xchart2 = new List<double>(); // charakterystyka V(RPM) 
+        public static List<double> xchart2 = new List<double>(); // czas
+        public static List<double> xchart3 = new List<double>(); // czas
         public List<double> ychart2 = new List<double>(); // charakterystyka V(RPM)
         public List<double> y2chart2 = new List<double>(); // charakterystyka V(RPM)
+        public static List<double> ychart3 = new List<double>(); // Uchył
+        public static List<double> y2chart3 = new List<double>(); // regulacja obciążenia
         public int _ticks;
         public int RPM = 1000; // revolutions per minute
         public double RPMV; // prędkość wybranego koła zębatego w skrzyni biegów
@@ -37,6 +41,7 @@ namespace Skrzynia_biegów_V2
         public int _sec = 0;
         public int _min = 0;
         public static Chart chart2 = null; // jedyne statyczne pole.
+        public static Chart chart3 = null;
         public View()
         {
             InitializeComponent();
@@ -97,7 +102,7 @@ namespace Skrzynia_biegów_V2
              ychart[1] = y2;
         }
 
-        public void AddPointsToVchart()  //dodanie punktów do wykresu RPM(V)
+        public void AddPointsToVchart()  //dodanie punktów do wykresu RPM i V
         {
             if ( Praca == true)
             {
@@ -111,6 +116,20 @@ namespace Skrzynia_biegów_V2
                  y2chart2.Add(double.Parse(BoxDownSpeed.Text));
             }
 
+        }
+        public void AddPointsToUchart() // dodanie punktów do wykresu uchyłu
+        {
+            if (Praca == true)
+            {
+                int xtime = _sec;
+                if (_min > 0)
+                {
+                    xtime += _min * 60;
+                }
+                xchart3.Add(xtime);
+                ychart3.Add(2 * BarUchyl.Value);
+                y2chart3.Add(BarObc.Value);
+            }
         }
 
         public void ControlGear()//Sprawdza biegi
@@ -186,6 +205,33 @@ namespace Skrzynia_biegów_V2
                         Console.WriteLine("Błąd pracy skrzyni biegów");
                         break;
                 }
+            }
+        }
+        public void ControlDPR()
+        {
+            switch(DPRtrack.Value)
+            {
+                case 1:
+                    if ((BarUchyl.Value) != 0)
+                    {
+                        MessageBox.Show("Nie możesz przełączyć się na tryb parkowania podczas jazdy");
+                    }
+                    else
+                    {
+                        if (DPRtrack.Value == 1)
+                        {
+                            StopSystem();
+                            LabelP.ForeColor = Color.Green;
+                            DPRtrack.Value = 2;
+                            LabelD.ForeColor = Color.White;
+                            LabelR.ForeColor = Color.White;
+                        }
+                    }
+
+                    break;
+                default:
+                    Console.WriteLine("Błąd skrzyni biegów");
+                    break;
             }
         }
         public void Engine()//praca silnika
@@ -267,16 +313,7 @@ namespace Skrzynia_biegów_V2
 
             }
         }
-        public void ButtonStart_Click(object sender, EventArgs e)
-        {
-            TimerCzas.Start();
-            Praca = true;
-            xchart2.Clear();
-            ychart2.Clear();
-            y2chart2.Clear();
-        }
-
-        private void ButtonStop_Click(object sender, EventArgs e)
+        public void StopSystem()
         {
             TimerCzas.Stop();
             _sec = 0;
@@ -287,6 +324,23 @@ namespace Skrzynia_biegów_V2
             BoxRPM.Text = "0";
             aGauge1.Value = 0;
             aGauge2.Value = 0;
+        }
+        public void ButtonStart_Click(object sender, EventArgs e)
+        {
+            TimerCzas.Start();
+            Praca = true;
+            xchart2.Clear();
+            ychart2.Clear();
+            y2chart2.Clear();
+            xchart3.Clear();
+            ychart3.Clear();
+            y2chart3.Clear();
+            DPRtrack.Value = 2;
+        }
+
+        private void ButtonStop_Click(object sender, EventArgs e)
+        {
+            StopSystem();
         }
 
         private void TimerCzas_Tick_1(object sender, EventArgs e)
@@ -310,6 +364,12 @@ namespace Skrzynia_biegów_V2
                     chart2.Series["RPM"].Points.DataBindXY(xchart2, ychart2);
                     chart2.Series["V"].Points.DataBindXY(xchart2, y2chart2);
                 }
+                AddPointsToUchart();
+                if (chart3 != null)
+                {
+                    chart3.Series["Uchył"].Points.DataBindXY(xchart3, ychart3);
+                    chart3.Series["Obciążenie"].Points.DataBindXY(xchart3, y2chart3);
+                }
             }
             if (_time > 1)//loopa do wstawiania zmiennych
             {
@@ -328,6 +388,7 @@ namespace Skrzynia_biegów_V2
             Form3 form3 = new Form3();
             form3.Show();
             View.chart2 = form3.chart2;
+            View.chart3 = form3.chart3;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Skrzynia_biegów_V2
         public Form3()
         {
             InitializeComponent();
+            //Wykresy obrotów silnika i prędkości
             chart2.Series[0].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Primary;
             chart2.Series[1].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
             chart2.ChartAreas[0].AxisX.Title = "czas";
@@ -23,6 +24,15 @@ namespace Skrzynia_biegów_V2
             chart2.ChartAreas[0].AxisX.Minimum = 0;
             chart2.Series["RPM"].Points.DataBindXY(Form1.xchart2, Form1.ychart2);
             chart2.Series["V"].Points.DataBindXY(Form1.xchart2, Form1.y2chart2);
+
+            //Wykresy uchyłu przepustnicy i regulacji obciążenia
+            chart2.Series[0].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Primary;
+            chart2.Series[1].YAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            chart3.ChartAreas[0].AxisX.Title = "czas";
+            chart3.ChartAreas[0].AxisY.Title = "Uchył przepustnicy, regulacja obciążenia";
+            chart3.ChartAreas[0].AxisX.Minimum = 0;
+            chart3.Series["Uchył"].Points.DataBindXY(View.xchart3, View.ychart3);
+            chart3.Series["Obciążenie"].Points.DataBindXY(View.xchart3, View.y2chart3);
         }
                 
         private void Form3_Load(object sender, EventArgs e)
@@ -38,6 +48,7 @@ namespace Skrzynia_biegów_V2
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             View.chart2 = null;
+            View.chart3 = null;
         }
     }
 }
