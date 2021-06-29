@@ -30,18 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.AGaugeRange aGaugeRange1 = new System.Windows.Forms.AGaugeRange();
-            System.Windows.Forms.AGaugeRange aGaugeRange2 = new System.Windows.Forms.AGaugeRange();
-            System.Windows.Forms.AGaugeRange aGaugeRange3 = new System.Windows.Forms.AGaugeRange();
-            System.Windows.Forms.AGaugeRange aGaugeRange4 = new System.Windows.Forms.AGaugeRange();
-            System.Windows.Forms.AGaugeRange aGaugeRange5 = new System.Windows.Forms.AGaugeRange();
-            System.Windows.Forms.AGaugeRange aGaugeRange6 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.AGaugeRange aGaugeRange7 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.AGaugeRange aGaugeRange8 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.AGaugeRange aGaugeRange9 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.AGaugeRange aGaugeRange10 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.AGaugeRange aGaugeRange11 = new System.Windows.Forms.AGaugeRange();
+            System.Windows.Forms.AGaugeRange aGaugeRange12 = new System.Windows.Forms.AGaugeRange();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LabelR = new System.Windows.Forms.Label();
+            this.LabelP = new System.Windows.Forms.Label();
             this.LabelD = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.DPRtrack = new System.Windows.Forms.TrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.BarSzybkosc = new System.Windows.Forms.TrackBar();
             this.button4 = new System.Windows.Forms.Button();
@@ -81,10 +83,8 @@
             this.TimerTick = new System.Windows.Forms.Timer(this.components);
             this.TimerCzas = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.LabelP = new System.Windows.Forms.Label();
-            this.LabelR = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DPRtrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarSzybkosc)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BarPraca)).BeginInit();
@@ -101,7 +101,7 @@
             this.panel1.Controls.Add(this.LabelR);
             this.panel1.Controls.Add(this.LabelP);
             this.panel1.Controls.Add(this.LabelD);
-            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Controls.Add(this.DPRtrack);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.BarSzybkosc);
             this.panel1.Controls.Add(this.button4);
@@ -123,6 +123,28 @@
             this.panel1.Size = new System.Drawing.Size(175, 959);
             this.panel1.TabIndex = 0;
             // 
+            // LabelR
+            // 
+            this.LabelR.AutoSize = true;
+            this.LabelR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.LabelR.ForeColor = System.Drawing.SystemColors.Window;
+            this.LabelR.Location = new System.Drawing.Point(21, 779);
+            this.LabelR.Name = "LabelR";
+            this.LabelR.Size = new System.Drawing.Size(22, 20);
+            this.LabelR.TabIndex = 39;
+            this.LabelR.Text = "R";
+            // 
+            // LabelP
+            // 
+            this.LabelP.AutoSize = true;
+            this.LabelP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.LabelP.ForeColor = System.Drawing.SystemColors.Window;
+            this.LabelP.Location = new System.Drawing.Point(21, 745);
+            this.LabelP.Name = "LabelP";
+            this.LabelP.Size = new System.Drawing.Size(21, 20);
+            this.LabelP.TabIndex = 38;
+            this.LabelP.Text = "P";
+            // 
             // LabelD
             // 
             this.LabelD.AutoSize = true;
@@ -134,15 +156,16 @@
             this.LabelD.TabIndex = 37;
             this.LabelD.Text = "D";
             // 
-            // trackBar1
+            // DPRtrack
             // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(96, 704);
-            this.trackBar1.Maximum = 2;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 104);
-            this.trackBar1.TabIndex = 36;
+            this.DPRtrack.LargeChange = 1;
+            this.DPRtrack.Location = new System.Drawing.Point(96, 704);
+            this.DPRtrack.Maximum = 2;
+            this.DPRtrack.Name = "DPRtrack";
+            this.DPRtrack.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.DPRtrack.Size = new System.Drawing.Size(45, 104);
+            this.DPRtrack.TabIndex = 36;
+            this.DPRtrack.Value = 1;
             // 
             // label11
             // 
@@ -461,29 +484,29 @@
             // 
             // chart1
             // 
-            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisX2.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisY2.LineColor = System.Drawing.Color.White;
-            chartArea1.BorderColor = System.Drawing.Color.White;
-            chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX2.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.White;
+            chartArea2.BorderColor = System.Drawing.Color.White;
+            chartArea2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.ForeColor = System.Drawing.Color.White;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(391, 542);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.BorderWidth = 4;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.ShadowColor = System.Drawing.Color.Black;
-            this.chart1.Series.Add(series1);
+            series2.BorderWidth = 4;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.ShadowColor = System.Drawing.Color.Black;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(351, 134);
             this.chart1.TabIndex = 35;
             this.chart1.Text = "chart1";
@@ -498,30 +521,30 @@
             this.aGauge1.BaseArcSweep = 270;
             this.aGauge1.BaseArcWidth = 2;
             this.aGauge1.Center = new System.Drawing.Point(110, 100);
-            aGaugeRange1.Color = System.Drawing.Color.Empty;
-            aGaugeRange1.EndValue = 0F;
-            aGaugeRange1.InnerRadius = 1;
-            aGaugeRange1.InRange = false;
-            aGaugeRange1.Name = "GaugeRange1";
-            aGaugeRange1.OuterRadius = 2;
-            aGaugeRange1.StartValue = 0F;
-            aGaugeRange2.Color = System.Drawing.Color.Empty;
-            aGaugeRange2.EndValue = 0F;
-            aGaugeRange2.InnerRadius = 1;
-            aGaugeRange2.InRange = false;
-            aGaugeRange2.Name = "GaugeRange2";
-            aGaugeRange2.OuterRadius = 2;
-            aGaugeRange2.StartValue = 0F;
-            aGaugeRange3.Color = System.Drawing.Color.Empty;
-            aGaugeRange3.EndValue = 0F;
-            aGaugeRange3.InnerRadius = 1;
-            aGaugeRange3.InRange = false;
-            aGaugeRange3.Name = "GaugeRange3";
-            aGaugeRange3.OuterRadius = 2;
-            aGaugeRange3.StartValue = 0F;
-            this.aGauge1.GaugeRanges.Add(aGaugeRange1);
-            this.aGauge1.GaugeRanges.Add(aGaugeRange2);
-            this.aGauge1.GaugeRanges.Add(aGaugeRange3);
+            aGaugeRange7.Color = System.Drawing.Color.Empty;
+            aGaugeRange7.EndValue = 0F;
+            aGaugeRange7.InnerRadius = 1;
+            aGaugeRange7.InRange = false;
+            aGaugeRange7.Name = "GaugeRange1";
+            aGaugeRange7.OuterRadius = 2;
+            aGaugeRange7.StartValue = 0F;
+            aGaugeRange8.Color = System.Drawing.Color.Empty;
+            aGaugeRange8.EndValue = 0F;
+            aGaugeRange8.InnerRadius = 1;
+            aGaugeRange8.InRange = false;
+            aGaugeRange8.Name = "GaugeRange2";
+            aGaugeRange8.OuterRadius = 2;
+            aGaugeRange8.StartValue = 0F;
+            aGaugeRange9.Color = System.Drawing.Color.Empty;
+            aGaugeRange9.EndValue = 0F;
+            aGaugeRange9.InnerRadius = 1;
+            aGaugeRange9.InRange = false;
+            aGaugeRange9.Name = "GaugeRange3";
+            aGaugeRange9.OuterRadius = 2;
+            aGaugeRange9.StartValue = 0F;
+            this.aGauge1.GaugeRanges.Add(aGaugeRange7);
+            this.aGauge1.GaugeRanges.Add(aGaugeRange8);
+            this.aGauge1.GaugeRanges.Add(aGaugeRange9);
             this.aGauge1.Location = new System.Drawing.Point(650, 279);
             this.aGauge1.MaxValue = 8000F;
             this.aGauge1.MinValue = 0F;
@@ -568,30 +591,30 @@
             this.aGauge2.BaseArcSweep = 270;
             this.aGauge2.BaseArcWidth = 2;
             this.aGauge2.Center = new System.Drawing.Point(110, 100);
-            aGaugeRange4.Color = System.Drawing.Color.Empty;
-            aGaugeRange4.EndValue = 0F;
-            aGaugeRange4.InnerRadius = 1;
-            aGaugeRange4.InRange = false;
-            aGaugeRange4.Name = "GaugeRange1";
-            aGaugeRange4.OuterRadius = 2;
-            aGaugeRange4.StartValue = 0F;
-            aGaugeRange5.Color = System.Drawing.Color.Empty;
-            aGaugeRange5.EndValue = 0F;
-            aGaugeRange5.InnerRadius = 1;
-            aGaugeRange5.InRange = false;
-            aGaugeRange5.Name = "GaugeRange2";
-            aGaugeRange5.OuterRadius = 2;
-            aGaugeRange5.StartValue = 0F;
-            aGaugeRange6.Color = System.Drawing.Color.Empty;
-            aGaugeRange6.EndValue = 0F;
-            aGaugeRange6.InnerRadius = 1;
-            aGaugeRange6.InRange = false;
-            aGaugeRange6.Name = "GaugeRange3";
-            aGaugeRange6.OuterRadius = 2;
-            aGaugeRange6.StartValue = 0F;
-            this.aGauge2.GaugeRanges.Add(aGaugeRange4);
-            this.aGauge2.GaugeRanges.Add(aGaugeRange5);
-            this.aGauge2.GaugeRanges.Add(aGaugeRange6);
+            aGaugeRange10.Color = System.Drawing.Color.Empty;
+            aGaugeRange10.EndValue = 0F;
+            aGaugeRange10.InnerRadius = 1;
+            aGaugeRange10.InRange = false;
+            aGaugeRange10.Name = "GaugeRange1";
+            aGaugeRange10.OuterRadius = 2;
+            aGaugeRange10.StartValue = 0F;
+            aGaugeRange11.Color = System.Drawing.Color.Empty;
+            aGaugeRange11.EndValue = 0F;
+            aGaugeRange11.InnerRadius = 1;
+            aGaugeRange11.InRange = false;
+            aGaugeRange11.Name = "GaugeRange2";
+            aGaugeRange11.OuterRadius = 2;
+            aGaugeRange11.StartValue = 0F;
+            aGaugeRange12.Color = System.Drawing.Color.Empty;
+            aGaugeRange12.EndValue = 0F;
+            aGaugeRange12.InnerRadius = 1;
+            aGaugeRange12.InRange = false;
+            aGaugeRange12.Name = "GaugeRange3";
+            aGaugeRange12.OuterRadius = 2;
+            aGaugeRange12.StartValue = 0F;
+            this.aGauge2.GaugeRanges.Add(aGaugeRange10);
+            this.aGauge2.GaugeRanges.Add(aGaugeRange11);
+            this.aGauge2.GaugeRanges.Add(aGaugeRange12);
             this.aGauge2.Location = new System.Drawing.Point(391, 280);
             this.aGauge2.MaxValue = 260F;
             this.aGauge2.MinValue = 0F;
@@ -731,28 +754,6 @@
             // 
             this.TimerCzas.Tick += new System.EventHandler(this.TimerCzas_Tick_1);
             // 
-            // LabelP
-            // 
-            this.LabelP.AutoSize = true;
-            this.LabelP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.LabelP.ForeColor = System.Drawing.SystemColors.Window;
-            this.LabelP.Location = new System.Drawing.Point(21, 745);
-            this.LabelP.Name = "LabelP";
-            this.LabelP.Size = new System.Drawing.Size(21, 20);
-            this.LabelP.TabIndex = 38;
-            this.LabelP.Text = "P";
-            // 
-            // LabelR
-            // 
-            this.LabelR.AutoSize = true;
-            this.LabelR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.LabelR.ForeColor = System.Drawing.SystemColors.Window;
-            this.LabelR.Location = new System.Drawing.Point(21, 779);
-            this.LabelR.Name = "LabelR";
-            this.LabelR.Size = new System.Drawing.Size(22, 20);
-            this.LabelR.TabIndex = 39;
-            this.LabelR.Text = "R";
-            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,7 +765,7 @@
             this.Text = "View";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DPRtrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarSzybkosc)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -821,7 +822,7 @@
         private System.Windows.Forms.Timer TimerCzas;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar DPRtrack;
         private System.Windows.Forms.Label LabelD;
         private System.Windows.Forms.Label LabelR;
         private System.Windows.Forms.Label LabelP;
